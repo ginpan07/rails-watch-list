@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'movies/index'
+  get 'lists/index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -7,4 +9,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # see all the lists
+  get "lists", to: "lists#index"
+
+  # create new list
+
+  # see one item on list
+  get "lists/:id", to: "lists#show", as: :list
 end
