@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :bookmarks, only: [:destroy]
 
+  root "lists#index"
+
   # # see all the lists
   # get "lists", to: "lists#index"
 
