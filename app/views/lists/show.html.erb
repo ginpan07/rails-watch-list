@@ -30,17 +30,21 @@
 
 <div class="container mt-5 d-flex flex-row bd-highlight mb-3  mx-auto my-auto">
   <% @movies.each do |movie|%>
+     <% movie_bookmarks = movie.bookmarks.where(list_id: @list) %>
+     <% movie_bookmarks.each do |bookmark| %>
     <div class="card m-1" style="width: 18rem;">
       <img src="..." class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><%= movie.title %></h5>
         <p class="card-text"><%= movie.overview %></p>
-         <%= link_to "Delete",  bookmark_path(movie.bookmarks),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
+          <%= link_to "Delete", bookmark_path(bookmark),
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "btn btn-danger" %>
+
         <%# <p class="card-text">Some quic and make up the bulk of the card's content.</p> %>
         <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
       </div>
     </div>
+    <% end %>
   <% end %>
 </div>
